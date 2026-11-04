@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
 func main()  {
 	manager := &PlayerManager{}
@@ -23,7 +26,7 @@ func main()  {
 	manager.addPlayer(player2)
 
 	player := manager.getPlayerID(1)
-	
+
 	removed := manager.PlayerRemove(1)
 
 	fmt.Println("suppression réussite :", removed)
@@ -42,4 +45,17 @@ func main()  {
 		p.Level,
 	)
 	}
+
+	http.HandleFunc("/", helloHandler)
+
+	fmt.Println("Serveur démarré sur le port 8080")
+
+	http.ListenAndServe(":8080", nil)
+	
+	err := http.ListenAndServe(":8080", nil)
+	
+	if err != nil {
+		panic(err)
+	}
+
 }
