@@ -1,5 +1,7 @@
 package main
 
+import "slices"
+
 type PlayerManager struct {
 	Players []Player 
 }
@@ -26,4 +28,15 @@ func (m *PlayerManager) updatePlayerHP(id int, hp int) bool  {
 	} else {
 		return false
 	}
+}
+
+func (m *PlayerManager) PlayerRemove(id int) bool {
+	for i, v := range m.Players {
+		if v.ID == id {
+			m.Players = slices.Delete(m.Players, i, i+1)
+			return true
+		}
+	}
+
+	return false
 }

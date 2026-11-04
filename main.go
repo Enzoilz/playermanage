@@ -23,6 +23,10 @@ func main()  {
 	manager.addPlayer(player2)
 
 	player := manager.getPlayerID(1)
+	
+	removed := manager.PlayerRemove(1)
+
+	fmt.Println("suppression réussite :", removed)
 
 	if player != nil {
 		fmt.Printf("Joueur trouvé : %s / HP : %d\n", player.Name, player.HP)
