@@ -22,6 +22,14 @@ func main()  {
 	manager.addPlayer(player1)
 	manager.addPlayer(player2)
 
+	player := manager.getPlayerID(1)
+
+	if player != nil {
+		fmt.Printf("Joueur trouvé : %s / HP : %d\n", player.Name, player.HP)
+	} else {
+		fmt.Println("Joueur introuvable\n")
+	}
+
 	for _, p := range manager.Players {
 		fmt.Printf("ID : %d | Nom : %s | HP : %d | Niveau : %d\n", 
 		p.ID,
